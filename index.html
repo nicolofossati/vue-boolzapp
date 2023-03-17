@@ -57,12 +57,12 @@
 
                 <div class="chats-list">
                     <ol>
-                        <li>
+                        <li v-for="contact in contacts">
                             <div class="chat-list-img">
-                                <img src="img/avatar_1.jpg">
+                                <img :src="contact.avatar">
                             </div>
                             <div class="chat-list-user">
-                                <h1>Michele</h1>
+                                <h1>{{contact.name}}</h1>
                                 <span>Ultimo mex</span>
                             </div>
                         </li>
