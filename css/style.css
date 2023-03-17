@@ -83,6 +83,36 @@
 .search-bar{
     height: 40px;
     background-color: rgb(250, 250, 250);
+    display: flex;
+    padding: 5px;
+    width: 100%;
+}
+
+.search-bar button{
+    border-right: 0;
+}
+
+
+.search-icon-container{
+    width: 10%;
+    border: 1px solid rgb(220, 220, 220);
+    background-color: white;
+}
+
+.search{
+    width: 90%;
+}
+
+.search input{
+    height: 100%;
+    width: 100%;
+    border: 1px solid rgb(220, 220, 220);
+    padding-left: 10px;
+    font-weight: 500;
+}
+
+.search-icon-container i{
+    color: #b1b1b1;
 }
 
 .chats-list{
@@ -113,4 +143,32 @@
 .send-bar{
     height: 50px;
     background-color: rgb(243, 238, 234);
+}
+
+.chats-list ol li{
+    height: 70px;
+    display: flex;
+}
+
+.chat-list-img{
+    height: 70px;
+    padding: 10px;
+}
+
+.chats-list ol li img{
+    height: 50px;
+    border-radius: 50%;
+}
+
+.chat-list-user h1{
+    font-size: 18px;
+    font-weight: 500;
+}
+.chat-list-user span{
+    font-size: 15px;
+    color: #b1b1b1;
+}
+
+.chat-list-user{
+    padding: 10px 0 0 5px;
 }
