@@ -12,7 +12,11 @@
 
 
 
-
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*//////////////////////////  CHATS LIST left   /////////////////////////////*/
 .sidebar-chats-container{
     width: calc(100% / 3);
@@ -22,12 +26,59 @@
 .admin-profile{
     height: 50px;
     background-color: rgb(234, 234, 234);
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-container img{
+    height: 45px;
+    border-radius: 50%;
+    margin: 0 5px 0 10px;
+}
+
+.profile-action > *{
+    margin-left: 20px;
+    color: #b1b1b1;
+    font-size: 20px;
+}
+
+.profile-action:last-child{
+    margin-right: 20px;
+    color: #b1b1b1;
 }
 
 .notifications{
     height: 75px;
     background-color: rgb(142, 218, 252);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
+.bell-container{
+    background-color: white;
+    height: 60%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 0 10px 0 20px;
+}
+.bell-container i{
+    font-size: 20px;
+    color: rgb(142, 218, 252);
+}
+
+.notification-action>span{
+    display: block;
+}
+.notification-action span:first-child{
+    font-weight: 600;
+}
+.notification-action span:last-child{
+    text-decoration: underline;
+    color: rgb(98, 98, 98);
+    font-size: 15px;
+}
+
 
 .search-bar{
     height: 40px;
@@ -37,6 +88,7 @@
 .chats-list{
     height: calc(100vh - 165px);
     background-color: rgb(255, 255, 255);
+    overflow-y: scroll;
 }
 
 /*//////////////////////  CHAT right //////////////////////////////////  */
@@ -54,6 +106,8 @@
 .chat{
     height: calc(100vh - 100px);
     background-image: url('../img/mine.jpg');
+    overflow-y: scroll;
+    
 }
 
 .send-bar{
