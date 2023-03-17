@@ -4,3 +4,59 @@
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
 }
+
+.container{
+    height: 100vh;
+    display: flex;
+}
+
+
+
+
+/*//////////////////////////  CHATS LIST left   /////////////////////////////*/
+.sidebar-chats-container{
+    width: calc(100% / 3);
+    height: 100%;
+}
+
+.admin-profile{
+    height: 50px;
+    background-color: rgb(234, 234, 234);
+}
+
+.notifications{
+    height: 75px;
+    background-color: rgb(142, 218, 252);
+}
+
+.search-bar{
+    height: 40px;
+    background-color: rgb(250, 250, 250);
+}
+
+.chats-list{
+    height: calc(100vh - 165px);
+    background-color: rgb(255, 255, 255);
+}
+
+/*//////////////////////  CHAT right //////////////////////////////////  */
+
+.chat-container{
+    width: calc((100% / 3)*2);
+    height: 100%;
+}
+
+.chat-user{
+    height: 50px;
+    background-color: rgb(234, 234, 234);
+}
+
+.chat{
+    height: calc(100vh - 100px);
+    background-image: url('../img/mine.jpg');
+}
+
+.send-bar{
+    height: 50px;
+    background-color: rgb(243, 238, 234);
+}
