@@ -129,15 +129,31 @@
 }
 
 .chat-user{
-    height: 50px;
+    height: 70px;
     background-color: rgb(234, 234, 234);
+    display: flex;
+    justify-content: space-between;
+}
+
+.chat-user-action{
+
+}
+
+.chat-list-img-container{
+    display: flex;
 }
 
 .chat{
     height: calc(100vh - 100px);
     background-image: url('../img/mine.jpg');
     overflow-y: scroll;
-    
+    padding: 50px 100px;
+}
+
+.chat::after{
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .send-bar{
@@ -155,7 +171,7 @@
     padding: 10px;
 }
 
-.chats-list ol li img{
+.chat-list-img img{
     height: 50px;
     border-radius: 50%;
 }
@@ -171,4 +187,36 @@
 
 .chat-list-user{
     padding: 10px 0 0 5px;
+}
+
+.message{
+    width: 250px;
+    min-height: 50px;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 12px;
+    margin-bottom: 15px;
+}
+
+.message-time-container{
+    width: 100%;
+    height: 10px;
+    position: relative;
+    height: 15px;
+}
+
+.message-time{
+    position: absolute;
+    right: 0;
+    font-size: 10px;
+    color: #979797;
+    font-weight: 500;
+}
+
+.message-text {
+    font-size: 15px;
+}
+
+.send{
+    background-color: #d5f9ba;
 }
