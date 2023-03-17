@@ -150,7 +150,7 @@
     padding: 50px 100px;
 }
 
-.chat::after{
+.message-container::after{
     content: "";
     display: table;
     clear: both;
@@ -189,13 +189,17 @@
     padding: 10px 0 0 5px;
 }
 
+.message-container{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 .message{
     width: 250px;
     min-height: 50px;
     background-color: white;
     border-radius: 5px;
     padding: 5px 12px;
-    margin-bottom: 15px;
 }
 
 .message-time-container{
@@ -219,4 +223,5 @@
 
 .send{
     background-color: #d5f9ba;
+    float: right;
 }
