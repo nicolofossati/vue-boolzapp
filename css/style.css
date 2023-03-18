@@ -198,14 +198,16 @@
     min-height: 50px;
     background-color: white;
     border-radius: 5px;
-    padding: 5px 12px;
+    padding: 5px 8px 5px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .message-time-container{
     width: 100%;
     height: 10px;
     position: relative;
-    height: 15px;
 }
 
 .message-time{
@@ -284,4 +286,6 @@
     color: rgb(107, 115, 118);
 }
 
-
+.select{
+    background-color: #e9ebeb;
+}
