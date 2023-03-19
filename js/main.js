@@ -4,6 +4,9 @@ const { createApp } = Vue
     data() {
       return {
         chat_index: 0,
+        newMessage: "",
+        timeout: null,
+        answer_check: false,
         contacts: [
           {
             name: 'Michele',
@@ -172,6 +175,60 @@ const { createApp } = Vue
     methods : {
       refresh_index(i){
         this.chat_index = i;
+      },
+      
+      add_message(mex, user, from, already_add){ // mex contiene il contenuto del testo, user rappresenta l'indice del destinatario
+        const now = luxon.DateTime.local(); // genera la data corrente utilizzando il fuso orario del browser
+        //console.log(now.toISO()); metodo per stampare la data ---> '2023-03-18T20:22:24.257+01:00' e deve diventare '10/01/2020 15:30:55' 
+        day = now.day.toString();
+        month = now.month.toString();
+        year = now.year.toString();
+        hour = now.hour.toString();
+        minute = now.minute.toString();
+        second = now.second.toString();
+        if(day.length==1){
+          day = "0" + day;
+        }
+        if(month.length==1){
+          month = `0`+ month;
+        }
+        if(hour.length==1){
+          hour = `0` +hour;
+        }
+        if(minute.length==1){
+          minute = `0`+minute;
+        }
+        if(second.length==1){
+          second = `0`+second;
+        }
+        myformatting = day +"/"+ month+"/"+year+" "+hour+":"+minute+":"+second; //sovrascrive la var now nella formattazione di messages.message
+        console.log(myformatting);
+        let status = "";
+        if(from=="him"){
+          statu = 'received';
+        } else {
+          statu = 'sent';
+        }
+
+        let message = {
+            date: myformatting,
+            message: mex,
+            status: statu
+          }
+        this.contacts[user].messages.push(message);
+
+        this.newMessage = "";
+        if(!already_add){
+          this.answer_check = true;
+          this.answer();
+        }
+      },
+
+      answer(){
+        this.timeout = setTimeout(() => {
+          this.add_message('ok', this.chat_index, 'him', this.answer_check);
+        }, 1000);
       }
+      
     }
   }).mount('#app')
