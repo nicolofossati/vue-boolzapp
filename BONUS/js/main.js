@@ -16,6 +16,7 @@ const { createApp } = Vue
         filterInput : "",
         dropdown_class : "drop-down d-none",
         showIcon : true,
+        answerList:['È certo','	È decisamente così','Senza dubbio', 'Sì, sicuramente', 'Puoi fare affidamento su di esso', 'Per come la vedo io, sì', 'Molto probabilmente', 'ok', 'I segni indicano sì', 'La risposta è sfocata, riprova','Si prega di chiedere di nuovo più tardi','Meglio non dirtelo ora','Non prevedibile adesso','Concentrati e chiedi di nuovo','Non contarci','	La mia risposta è no','Le mie fonti dicono di no','Molto discutibile'],
         contacts: [
           {
             name: 'Michele',
@@ -236,8 +237,10 @@ const { createApp } = Vue
       },
 
       answer(){
+        const n = this.randomNum(0, this.answerList.length-1);
+
         timeout = setTimeout(() => {
-          this.add_message('ok', this.chat_index, 'him', this.answer_check);
+          this.add_message(this.answerList[n], this.chat_index, 'him', this.answer_check);
         }, 1000);
       },
       
@@ -294,6 +297,9 @@ const { createApp } = Vue
         } else {
           this.showIcon = true;
         }
+      },
+      randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
       }
     }
   }).mount('#app')
