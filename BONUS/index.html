@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- TITLE -->
+    <title>Boolzapp Web</title>
+</head>
+<body class="debug">
+
+    <div id="app">
+        <div class="container">
+            <div class="sidebar-chats-container">
+                <div class="admin-profile">
+                    <div class="profile-container flex-center">
+                        <img src="img/avatar_io.jpg">
+                        <span>Sofia</span> 
+                    </div>
+                    <div class="profile-action flex-center">
+                        <i class="fa-solid fa-circle-notch"></i>
+                        <i class="fa-solid fa-message"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+
+                <div class="notifications">
+                    <div class="bell-container flex-center">
+                        <i class="fa-solid fa-bell-slash"></i>
+                    </div>
+                    <div class="notification-action">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span>Attiva notifiche desktop</span>
+                    </div>
+                </div>
+
+                <div class="search-bar">
+                    <button class="search-icon-container">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="search">
+                        <input type="text" placeholder="Cerca o iniza una nuova chat" v-model="filterInput">
+                    </div>
+                </div>
+
+                <div class="chats-list">
+                    <ol>
+                        <li v-for="(contact, index) in contacts"  v-show="filter_list(contact.name)" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
+                            <div class="chat-list-img">
+                                <img :src="contact.avatar">
+                            </div>
+                            <div class="chat-list-user">
+                                <h1>{{contact.name}}</h1>
+                                <span class="last-message">{{contact.messages[contact.messages.length-1].message}}</span>
+                            </div>
+                            <span class="last-message-date">{{contact.messages[contact.messages.length-1].date.substring(11, 16)}}</span>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="chat-container">
+                <div class="chat-user-top">
+                    <div class="chat-user-left flex-center">
+                        <div class="chat-list-img-top">
+                            <img :src="contacts[chat_index].avatar">
+                        </div>
+                        <div class="chat-list-user chat-list-user-top">
+                            <h1>{{contacts[chat_index].name}}</h1>
+                            <span>Ultimo accesso</span>
+                        </div>
+                    </div>
+                    <div class="profile-action flex-center">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-sharp fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+                </div>
+
+                <div class="chat">
+                    
+                    <div v-for="(message,index) in contacts[chat_index].messages" class="message-container">
+                        <div class="message" :class="(message.status == 'sent')?'send':'' ">
+                            <span class="message-text">{{message.message}}</span>
+                            <div class="message-time-container">
+                                <span class="message-time">{{message.date.substring(11, 16)}}</span>
+                            </div>
+                            <div class="action-mex" :class="(message.status == 'sent')?'green-bg':'white-bg'">
+                                <i @click="show_drop_down(index)" class="fa-solid fa-angle-down"></i>
+                            </div>
+                            <div class="drop-down" :class="(message.dropdown == true)?'':'d-none'">
+                                <div class="drop-down-content">
+                                    <span>Message info</span>
+                                    <span @click="remove_message(index)">Delete message</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="send-bar">
+                    <div class="emoji flex-center">
+                        <i class="fa-regular fa-face-smile"></i>
+                    </div>
+
+                    <div class="send-mex">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="add_message(newMessage,chat_index,'me', false)">
+                    </div>
+
+                    <div class="vocal-audio flex-center">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- LUXON library -->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js"></script>
+    <!-- VUE JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- JAVASCRIPT -->
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
