@@ -22,6 +22,7 @@ const { createApp } = Vue
             name: 'Michele',
             avatar: './img/avatar_1.jpg',
             visible: true,
+            online: "ultimo accesso alle 08:56",
             messages: [
               {
               date: '10/01/2020 15:30:55',
@@ -47,6 +48,7 @@ const { createApp } = Vue
             name: 'Fabio',
             avatar: './img/avatar_2.jpg',
             visible: true,
+            online: "ultimo accesso alle 08:56",
             messages: [
               {
                 date: '20/03/2020 16:30:00',
@@ -72,6 +74,7 @@ const { createApp } = Vue
             name: 'Samuele',
             avatar: './img/avatar_3.jpg',
             visible: true,
+            online: "ultimo accesso alle 08:56",
             messages: [
               {
                 date: '28/03/2020 10:10:40',
@@ -97,6 +100,7 @@ const { createApp } = Vue
             name: 'Alessandro B.',
             avatar: './img/avatar_4.jpg',
             visible: true,
+            online: "ultimo accesso alle 08:56",
             messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -116,6 +120,7 @@ const { createApp } = Vue
           name: 'Alessandro L.',
           avatar: './img/avatar_5.jpg',
           visible: true,
+          online: "ultimo accesso alle 08:56",
           messages: [
           {
           date: '10/01/2020 15:30:55',
@@ -134,6 +139,7 @@ const { createApp } = Vue
           name: 'Claudia',
           avatar: './img/avatar_6.jpg',
           visible: true,
+          online: "ultimo accesso alle 08:56",
           messages: [
           {
           date: '10/01/2020 15:30:55',
@@ -159,6 +165,7 @@ const { createApp } = Vue
           name: 'Federico',
           avatar: './img/avatar_7.jpg',
           visible: true,
+          online: "ultimo accesso alle 08:56",
           messages: [
           {
           date: '10/01/2020 15:30:55',
@@ -178,6 +185,7 @@ const { createApp } = Vue
           name: 'Davide',
           avatar: './img/avatar_8.jpg',
           visible: true,
+          online: "ultimo accesso alle 08:56",
           messages: [
           {
           date: '10/01/2020 15:30:55',
@@ -238,9 +246,15 @@ const { createApp } = Vue
 
       answer(){
         const n = this.randomNum(0, this.answerList.length-1);
+        this.contacts[this.chat_index].online="sta scrivendo...";
 
         timeout = setTimeout(() => {
           this.add_message(this.answerList[n], this.chat_index, 'him', this.answer_check);
+          this.contacts[this.chat_index].online="online";
+          timeout = setTimeout(() => {
+            let ore = this.createNewDateToString().substring(11,16);
+            this.contacts[this.chat_index].online=`ultimo accesso alle ${ore}`;
+          }, 2000);
         }, 1000);
       },
       
