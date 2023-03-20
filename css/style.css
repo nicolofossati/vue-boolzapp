@@ -6,11 +6,18 @@
 }
 
 .container{
-    height: 100vh;
+    height: 95vh;
+    width: 90%;
     display: flex;
 }
 
-
+div#app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background:  linear-gradient(#009688 0% 15%, #dcdbd1 15% 75%);
+}
 
 .flex-center{
     display: flex;
@@ -116,7 +123,7 @@
 }
 
 .chats-list{
-    height: calc(100vh - 165px);
+    height: calc(95vh - 165px);
     background-color: rgb(255, 255, 255);
     overflow-y: scroll;
 }
@@ -141,7 +148,7 @@
 }
 
 .chat{
-    height: calc(100vh - 110px);
+    height: calc(95vh - 110px);
     background-image: url('../img/mine.jpg');
     overflow-y: scroll;
     padding: 50px 100px;
@@ -288,4 +295,8 @@
 
 .select{
     background-color: #e9ebeb;
+}
+
+.d-none{
+    display: none;
 }

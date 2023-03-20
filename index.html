@@ -51,13 +51,13 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                     <div class="search">
-                        <input type="text" placeholder="Cerca o iniza una nuova chat">
+                        <input type="text" placeholder="Cerca o iniza una nuova chat" v-model="filterInput">
                     </div>
                 </div>
 
                 <div class="chats-list">
                     <ol>
-                        <li v-for="(contact, index) in contacts" @click="refresh_index(index)" :class="(index==chat_index)?'select':''">
+                        <li v-for="(contact, index) in contacts" v-if="filter_list()" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
                             <div class="chat-list-img">
                                 <img :src="contact.avatar">
                             </div>
