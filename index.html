@@ -63,8 +63,9 @@
                             </div>
                             <div class="chat-list-user">
                                 <h1>{{contact.name}}</h1>
-                                <span>Ultimo mex</span>
+                                <span class="last-message">{{contact.messages[contact.messages.length-1].message}}</span>
                             </div>
+                            <span class="last-message-date">{{contact.messages[contact.messages.length-1].date.substring(11, 16)}}</span>
                         </li>
                     </ol>
                 </div>
