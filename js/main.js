@@ -228,20 +228,16 @@ const { createApp } = Vue
         return attribute;
       },
 
-      filter_list(){ //se ritorna true mostrerà il tag li altrimenti no
+      filter_list(name){ //se ritorna true mostrerà il tag li altrimenti no
         filter=this.filterInput.toLowerCase();
-        nome = this.contacts[this.chat_index].name.toLowerCase(); // Michele
+        nome = name.toLowerCase();
         if(filter==""){
-          console.log("Sono dentro il primo if");
           return true;
         } else {
           if(nome.includes(filter)){
-            console.log("Sono dentro il secondo if");
             return true;
-          } else {
-            console.log("Sono dentro il primo else");
-            return false;
           }
+          return false;
         }
       }
 

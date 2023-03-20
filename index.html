@@ -57,7 +57,7 @@
 
                 <div class="chats-list">
                     <ol>
-                        <li v-for="(contact, index) in contacts" v-if="filter_list()" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
+                        <li v-for="(contact, index) in contacts"  v-show="filter_list(contact.name)" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
                             <div class="chat-list-img">
                                 <img :src="contact.avatar">
                             </div>
@@ -73,10 +73,10 @@
                 <div class="chat-user-top">
                     <div class="chat-user-left flex-center">
                         <div class="chat-list-img-top">
-                            <img src="img/avatar_1.jpg">
+                            <img :src="contacts[chat_index].avatar">
                         </div>
                         <div class="chat-list-user chat-list-user-top">
-                            <h1>Michele</h1>
+                            <h1>{{contacts[chat_index].name}}</h1>
                             <span>Ultimo accesso</span>
                         </div>
                     </div>
