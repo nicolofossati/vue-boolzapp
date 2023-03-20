@@ -209,6 +209,42 @@ div#app {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
+}
+
+.action-mex{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    display: none;
+}
+
+.message i{
+    padding: 2px 4px;
+}
+
+.message:hover .action-mex{
+    display: block;
+}
+
+.drop-down{
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    background-color: white;
+    border-radius: 2px;
+    z-index: 1;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
+
+.drop-down-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.drop-down span {
+    padding: 10px 10px;
 }
 
 .message-time-container{
@@ -233,7 +269,6 @@ div#app {
     background-color: #d5f9ba;
     float: right;
 }
-
 
 .chat-user-top{
     height: 50px;
@@ -299,4 +334,14 @@ div#app {
 
 .d-none{
     display: none;
+}
+
+.green-bg{
+    background-color: #d5f9ba;
+    background: radial-gradient(circle at center, #d5f9ba 0% ,transparent 100%);
+}
+
+.white-bg{
+    background-color: white;
+    background: radial-gradient(circle at center, #ffffff 0% ,transparent 100%);
 }
