@@ -89,19 +89,19 @@
 
                 <div class="chat">
                     
-                    <div v-for="message in contacts[chat_index].messages" class="message-container">
+                    <div v-for="(message,index) in contacts[chat_index].messages" class="message-container">
                         <div class="message" :class="(message.status == 'sent')?'send':'' ">
                             <span class="message-text">{{message.message}}</span>
                             <div class="message-time-container">
                                 <span class="message-time">{{message.date.substring(11, 16)}}</span>
                             </div>
                             <div class="action-mex" :class="(message.status == 'sent')?'green-bg':'white-bg'">
-                                <i @click="show_drop-down()" class="fa-solid fa-angle-down"></i>
+                                <i @click="show_drop_down(index)" class="fa-solid fa-angle-down"></i>
                             </div>
-                            <div class="drop-down d-none">
+                            <div class="drop-down" :class="(message.dropdown == true)?'':'d-none'">
                                 <div class="drop-down-content">
                                     <span>Message info</span>
-                                    <span>Delete message</span>
+                                    <span @click="remove_message(index)">Delete message</span>
                                 </div>
                             </div>
                         </div>
