@@ -115,11 +115,14 @@
                     </div>
 
                     <div class="send-mex">
-                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="add_message(newMessage,chat_index,'me', false)">
+                        <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="add_message(newMessage,chat_index,'me', false)" @keyup="change_showIcon()">
                     </div>
 
-                    <div class="vocal-audio flex-center">
+                    <div class="vocal-audio flex-center" v-if="showIcon">
                         <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <div class="vocal-audio flex-center" v-else>
+                        <i class="fa-solid fa-paper-plane" @click="add_message(newMessage,chat_index,'me', false)"></i>
                     </div>
                 </div>
             </div>

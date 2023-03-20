@@ -1,6 +1,9 @@
 /* BONUS
-  1- evitare che l’utente possa inviare un messaggio vuoto o composto solamente da spazi
-
+1-  evitare che l’utente possa inviare un messaggio vuoto o composto solamente da spazi
+2-  A) cambiare icona in basso a destra (a fianco all’input per scrivere un nuovo messaggio) finché l’utente sta 
+    scrivendo: di default si visualizza l’icona del microfono, quando l’input non è vuoto si visualizza l’icona 
+    dell’aeroplano. Quando il messaggio è stato inviato e l’input si svuota, si torna a visualizzare il microfono.
+    B) inviare quindi il messaggio anche cliccando sull’icona dell’aeroplano
 */
 
 const { createApp } = Vue
@@ -12,6 +15,7 @@ const { createApp } = Vue
         answer_check: false,
         filterInput : "",
         dropdown_class : "drop-down d-none",
+        showIcon : true,
         contacts: [
           {
             name: 'Michele',
@@ -282,6 +286,14 @@ const { createApp } = Vue
           }
         }
         
+      },
+
+      change_showIcon(){
+        if(this.newMessage.trim().length !=0){
+          this.showIcon = false;
+        } else {
+          this.showIcon = true;
+        }
       }
     }
   }).mount('#app')
