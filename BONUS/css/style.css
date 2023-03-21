@@ -465,3 +465,64 @@ div#app {
     height: 400px;
     overflow-y: hidden;
 }
+
+.splash-page-container{
+    width: 100%;
+    height: 100vh;
+    background-color: #f0f2f5;
+    color: rgb(147, 151, 153);
+}
+
+.splash-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.splash-page > i{
+    font-size: 70px;
+    margin-bottom: 100px;
+}
+
+
+
+.whatsapp-span{
+    font-size: 20px;
+    margin: 20px 0 15px 0;
+    color: rgb(83, 83, 83);
+}
+
+.encryption{
+    font-size: 13px;
+}
+
+.encryption i{
+    margin-right: 10px;
+}
+
+.load-bar{
+    height: 5px;
+    width: 500px;
+    background-color: rgb(219, 219, 219);
+    border-radius: 10px;
+}
+
+.load{
+    animation: 1s  linear loader;
+    height: 5px;
+    width: 500px;
+    background-color: grey;
+    border-radius: 10px;
+}
+
+@keyframes loader{
+    0%{
+        width: 0%;
+    }
+
+    100%{
+        width: 100%;
+    }
+}
+

@@ -22,7 +22,15 @@
 <body class="debug">
 
     <div id="app">
-        <div class="container">
+        <div class="splash-page-container flex-center" v-if="splash_page">
+            <div class="splash-page">
+                <i class="fa-brands fa-whatsapp"></i>
+                <div class="load-bar"><div class="load"></div></div>
+                <span class="whatsapp-span">Whatsapp</span>
+                <span class="encryption"><i class="fa-solid fa-lock"></i>Con crittografia end-to-end</span>
+            </div>
+        </div>
+        <div class="container" v-else>
             <div class="sidebar-chats-container">
                 <div class="admin-profile">
                     <div class="profile-container flex-center">

@@ -11,6 +11,7 @@ const { createApp } = Vue
     data() {
       return {
         chat_index: -1,
+        splash_page : true,
         newMessage: "",
         answer_check: false,
         filterInput : "",
@@ -263,7 +264,6 @@ const { createApp } = Vue
           }, 2000);
         }, 1000);
       },
-      
       createNewDateToString(){
         const now = luxon.DateTime.local(); // genera la data corrente utilizzando il fuso orario del browser
         //console.log(now.toISO()); metodo per stampare la data ---> '2023-03-18T20:22:24.257+01:00' e deve diventare '10/01/2020 15:30:55' 
@@ -277,14 +277,12 @@ const { createApp } = Vue
         console.log(myFormatting);
         return myFormatting;
       },
-
       set_zero(attribute){
         if(attribute.length==1){
           attribute = `0` + attribute;
         }
         return attribute;
       },
-
       filter_list(name){ //se ritorna true mostrerà il tag li altrimenti no
         filter=this.filterInput.toLowerCase();
         nome = name.toLowerCase();
@@ -297,7 +295,6 @@ const { createApp } = Vue
           return false;
         }
       },
-
       show_drop_down(index){
         this.contacts[this.chat_index].messages[index].dropdown = true;
 
@@ -331,7 +328,6 @@ const { createApp } = Vue
           this.show_drop_down_chat();
         }
       },
-
       delete_chat(){
         this.contacts.splice(this.chat_index,1);
         this.show_drop_down_chat();
@@ -368,6 +364,14 @@ const { createApp } = Vue
       },
       change_avatarSelected(index){
         this.avatarSelected = index;
+      },
+      start_splash_page(){
+        timeout = setTimeout(() => {
+          this.splash_page = false;
+        }, 1000);
       }
+    },
+    mounted(){
+      this.start_splash_page();
     }
   }).mount('#app')
