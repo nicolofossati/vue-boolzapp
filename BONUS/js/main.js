@@ -51,7 +51,7 @@ const { createApp } = Vue
               }
             ],
           },
-          /*{
+          {
             name: 'Fabio',
             avatar: './img/avatar_2.jpg',
             visible: true,
@@ -213,7 +213,7 @@ const { createApp } = Vue
           dropdown: false
           }
           ],
-          }*/
+          }
         ]
       }
     },
