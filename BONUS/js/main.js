@@ -51,7 +51,7 @@ const { createApp } = Vue
               }
             ],
           },
-          {
+          /*{
             name: 'Fabio',
             avatar: './img/avatar_2.jpg',
             visible: true,
@@ -213,7 +213,7 @@ const { createApp } = Vue
           dropdown: false
           }
           ],
-          }
+          }*/
         ]
       }
     },
@@ -221,7 +221,6 @@ const { createApp } = Vue
       refresh_index(i){
         this.chat_index = i;
       },
-
       add_message(mex, user, from, already_add){ // mex contiene il contenuto del testo, user rappresenta l'indice del destinatario
         if(!mex.trim().length==0){ //se mex vuoto o nulla ritorna true altrimenti false, trim toglie ogni spazio vuoto prima e dopo mex
           let currentDate = this.createNewDateToString();
@@ -246,11 +245,9 @@ const { createApp } = Vue
           }
         }
       },
-
       remove_message(index){
         this.contacts[this.chat_index].messages.splice(index,1);
       },
-
       answer(){
         const n = this.randomNum(0, this.answerList.length-1);
         this.contacts[this.chat_index].online="sta scrivendo...";
@@ -368,7 +365,7 @@ const { createApp } = Vue
       start_splash_page(){
         timeout = setTimeout(() => {
           this.splash_page = false;
-        }, 1000);
+        }, 1100);
       }
     },
     mounted(){
