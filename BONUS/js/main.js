@@ -16,6 +16,12 @@ const { createApp } = Vue
         filterInput : "",
         dropdown_class : "drop-down d-none",
         showIcon : true,
+        dropdown_chat: false,
+        dropdown_profile: false,
+        popup_new_chat: false,
+        newContact: "",
+        avatarSelected: 0,
+        avatarArray: ['img/avatar_1.jpg','img/avatar_2.jpg','img/avatar_3.jpg','img/avatar_4.jpg','img/avatar_5.jpg','img/avatar_6.jpg','img/avatar_7.jpg','img/avatar_8.jpg','img/avatar_io.jpg'],
         answerList:['È certo','	È decisamente così','Senza dubbio', 'Sì, sicuramente', 'Puoi fare affidamento su di esso', 'Per come la vedo io, sì', 'Molto probabilmente', 'ok', 'I segni indicano sì', 'La risposta è sfocata, riprova','Si prega di chiedere di nuovo più tardi','Meglio non dirtelo ora','Non prevedibile adesso','Concentrati e chiedi di nuovo','Non contarci','	La mia risposta è no','Le mie fonti dicono di no','Molto discutibile'],
         contacts: [
           {
@@ -304,7 +310,6 @@ const { createApp } = Vue
         }
         
       },
-
       change_showIcon(){
         if(this.newMessage.trim().length !=0){
           this.showIcon = false;
@@ -314,6 +319,55 @@ const { createApp } = Vue
       },
       randomNum(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+      },
+      show_drop_down_chat(){
+        
+        this.dropdown_chat = !this.dropdown_chat;
+        console.log(this.dropdown_chat);
+      },
+      delete_all_message(){
+        if(this.contacts[this.chat_index].messages.length!=0){
+          this.contacts[this.chat_index].messages.splice(0, this.contacts[this.chat_index].messages.length);
+          this.show_drop_down_chat();
+        }
+      },
+
+      delete_chat(){
+        this.contacts.splice(this.chat_index,1);
+        this.show_drop_down_chat();
+        if(this.chat_index == this.contacts.length){
+          this.chat_index--;
+        }
+      },
+      /*show_drop_down_profile(){
+        this.dropdown_profile = !this.dropdown_profile;
+      },*/
+      new_chat_popup(check){
+        if(!check){
+          this.popup_new_chat = !this.popup_new_chat;
+        }
+        //this.show_drop_down_profile();
+      },
+      add_chat(){
+        if(this.newContact.trim().length!=0){
+          const newObject = {
+            name: this.newContact,
+            avatar: this.avatarArray[this.avatarSelected],
+            visible: true,
+            online: "ultimo accesso alle 08:56",
+            messages: []
+          }
+  
+          this.contacts.push(newObject);
+          this.newContact = "";
+          this.avatarSelected = 0;
+          this.new_chat_popup();
+          this.chat_index = this.contacts.length-1;
+          //this.show_drop_down_profile();
+        }
+      },
+      change_avatarSelected(index){
+        this.avatarSelected = index;
       }
     }
   }).mount('#app')

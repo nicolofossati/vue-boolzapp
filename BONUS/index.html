@@ -32,7 +32,13 @@
                     <div class="profile-action flex-center">
                         <i class="fa-solid fa-circle-notch"></i>
                         <i class="fa-solid fa-message"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" ></i>
+                        <!-- @click="show_drop_down_profile()" da inserire sopra in elliplis-vertical
+                        <div id="drop-down-chat-content" v-if="dropdown_profile">
+                            <span @click="new_chat_popup()">Crea nuova chat</span>
+                            <span>Crea nuovo gruppo</span>
+                        </div>
+                        -->
                     </div>
                 </div>
 
@@ -50,27 +56,41 @@
                     <button class="search-icon-container">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
+                    <button class="search-icon-container" @click="new_chat_popup()">
+                        <i class="fa-solid fa-message"></i>
+                    </button>
+                    
                     <div class="search">
                         <input type="text" placeholder="Cerca o iniza una nuova chat" v-model="filterInput">
                     </div>
                 </div>
 
                 <div class="chats-list">
+                    <div class="new_chat" v-if="popup_new_chat">
+                        <div class="send-mex">
+                            <input type="text" placeholder="Nome contatto" v-model="newContact">
+                        </div>
+                        <div class="avatar-select">
+                            <img :src="img" :class="(avatarSelected == index)?'border-select':''" v-for="(img,index) in avatarArray" @click="change_avatarSelected(index)">
+                        </div>
+
+                        <button @click="add_chat()">Inizia chat</button>
+                    </div>
                     <ol>
-                        <li v-for="(contact, index) in contacts"  v-show="filter_list(contact.name)" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
+                        <li v-for="(contact, index) in contacts" v-show="filter_list(contact.name)" @click="refresh_index(index)" :class="(index==chat_index) ? 'select' : ''">
                             <div class="chat-list-img">
                                 <img :src="contact.avatar">
                             </div>
                             <div class="chat-list-user">
                                 <h1>{{contact.name}}</h1>
-                                <span class="last-message">{{contact.messages[contact.messages.length-1].message}}</span>
+                                <span class="last-message" v-if="contact.messages.length != 0">{{contact.messages[contact.messages.length-1].message}}</span>
                             </div>
-                            <span class="last-message-date">{{contact.messages[contact.messages.length-1].date.substring(11, 16)}}</span>
+                            <span class="last-message-date" v-if="contact.messages.length != 0">{{contact.messages[contact.messages.length-1].date.substring(11, 16)}}</span>
                         </li>
                     </ol>
                 </div>
             </div>
-            <div class="chat-container">
+            <div class="chat-container" v-if="contacts.length != 0">
                 <div class="chat-user-top">
                     <div class="chat-user-left flex-center">
                         <div class="chat-list-img-top">
@@ -84,7 +104,11 @@
                     <div class="profile-action flex-center">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <i class="fa-sharp fa-solid fa-paperclip"></i>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                        <i class="fa-solid fa-ellipsis-vertical" @click="show_drop_down_chat()"></i>
+                        <div id="drop-down-chat-content" v-if="dropdown_chat">
+                            <span @click="delete_all_message()">Elimina messaggi</span>
+                            <span @click="delete_chat()">Elimina chat</span>
+                        </div>
                     </div>
                 </div>
 
@@ -125,6 +149,9 @@
                         <i class="fa-solid fa-paper-plane" @click="add_message(newMessage,chat_index,'me', false)"></i>
                     </div>
                 </div>
+            </div>
+            <div class="without-chat flex-center" v-else>
+                <img src="img/without-chat.jpg" alt="">
             </div>
         </div>
     </div>
