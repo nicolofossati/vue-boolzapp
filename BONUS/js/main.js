@@ -10,7 +10,7 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        chat_index: 0,
+        chat_index: -1,
         newMessage: "",
         answer_check: false,
         filterInput : "",

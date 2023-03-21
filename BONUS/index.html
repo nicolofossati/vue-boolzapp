@@ -90,7 +90,7 @@
                     </ol>
                 </div>
             </div>
-            <div class="chat-container" v-if="contacts.length != 0">
+            <div class="chat-container" v-if="contacts.length != 0 && chat_index!=-1">
                 <div class="chat-user-top">
                     <div class="chat-user-left flex-center">
                         <div class="chat-list-img-top">
@@ -150,8 +150,13 @@
                     </div>
                 </div>
             </div>
-            <div class="without-chat flex-center" v-else>
-                <img src="img/without-chat.jpg" alt="">
+            <div class="without-chat flex-center" v-else-if="contacts.length==0">
+                <img src="img/without-chat.jpg">
+            </div>
+            <div class="welcome-screen" v-else-if="chat_index == -1">
+                <h1>Benvenuto in Whatsapp Web</h1>
+                <img src="img/welcome.jpg">
+                <span>Seleziona o crea una chat per iniziare</span>
             </div>
         </div>
     </div>

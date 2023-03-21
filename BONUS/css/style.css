@@ -438,3 +438,30 @@ div#app {
 .border-select{
     border: 2px solid rgb(2, 11, 89);
 }
+
+.welcome-screen{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    background-color: #f9fafe;
+    color: rgb(66, 79, 107);
+    text-align: center;
+}
+
+.welcome-screen h1{
+    font-size: 45px;
+    margin-top: 50px;
+}
+
+.welcome-screen span{
+    font-size: 25px;
+    font-weight: 700;
+    margin-top: 30px;
+}
+
+.welcome-screen img{
+    height: 400px;
+    overflow-y: hidden;
+}
